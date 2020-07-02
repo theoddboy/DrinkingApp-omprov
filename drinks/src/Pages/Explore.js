@@ -12,10 +12,10 @@ const Explore = () => {
         <div id="startpage"> 
         <HeaderLinks/>
         <br/>
-        <p> TODO: 
-        <br/> man får söka genom att klicka på explore igen istället för knappen
-        <br/> du hamnar numret din drink har i hela listan istället för din filterarde lista 
-        <br/> kommentarer fältet uppdateras bara om du lämnar å kommer tillbaka till sidan  
+        <p> inte klart: 
+        <br/> du skall hamna på rätt drink när du klickar en bild i en filtrerad lista
+        <br/> sidan skall uppdateras när man kommenterar en drink eller klickar på sök
+        <br/> error när sökning gått fel
         </p>
         <input
             onChange={(e) => searchword=(e.target.value)}
