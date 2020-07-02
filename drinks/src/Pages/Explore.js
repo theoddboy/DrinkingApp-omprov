@@ -14,7 +14,6 @@ const Explore = () => {
         <br/>
         <p> TODO: 
         <br/> man får söka genom att klicka på explore igen istället för knappen
-        <br/> case sensetive sökning
         <br/> du hamnar numret din drink har i hela listan istället för din filterarde lista 
         <br/> kommentarer fältet uppdateras bara om du lämnar å kommer tillbaka till sidan  
         </p>
@@ -22,33 +21,35 @@ const Explore = () => {
             onChange={(e) => searchword=(e.target.value)}
             placeholder="type here"
         />
-            <button onClick={() => showDrinks()}>
+            <button onClick={ShowDrinks}>
                 search
             </button>
-            {showDrinks()}
+
+            {ShowDrinks()}
+
         </div>
     )
 }
 
-
-const showDrinks = () => {
-    return(
+const ShowDrinks = () => {
+        return(
         <div>
-        {drinksArr.cocktails.filter(elem => elem.name.includes(searchword)).map((filtered, elem) => (
-            <div key={elem}>
-                <p>{filtered.name}{elem}</p>
-                <NavLink key={elem} to={{
-                pathname:'/drinkinfo',
-                elem,
-                whichWay:0
-                }}>
+            {drinksArr.cocktails.filter(elem => elem.name.toLowerCase().includes(searchword)).map((filtered, elem) => (
+                <div key={elem}>
+                    <p>{filtered.name}</p>
+                    <NavLink key={elem} to={{
+                        pathname:'/drinkinfo',
+                        elem,
+                        whichWay:0
+                        }}>
 
-            <img src={filtered.image} key={elem} alt={filtered.name} />       
-            </NavLink>
+                        <img src={filtered.image} key={elem} alt={filtered.name} />       
+                    </NavLink>
             </div>
         ))}
       </div>
-      )
-}
+        )
+    }
+
 
 export default Explore;

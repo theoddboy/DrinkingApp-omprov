@@ -8,7 +8,6 @@ import comments from "../Data/comments.json"
 const DrinkInfo = (info) => {
 
     const elem = (info.location.elem + info.location.whichWay);
-    console.log("current drink " + elem + " which should be " + drinksArr.cocktails[elem].name)
 
     const [name, setName] = useState("");
     const [title, setTitle] = useState("");
