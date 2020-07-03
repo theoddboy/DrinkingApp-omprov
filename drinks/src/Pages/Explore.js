@@ -15,7 +15,10 @@ const Explore = () => {
         }
     
     const showDrink = () => {
-        return filteredArr.map((filtered, elem) => {
+        if(filteredArr.length === 0){
+            return <p>no drinks found with that name</p>
+        }
+        else return filteredArr.map((filtered, elem) => {
             return( 
                 <div>
                     <p>{filtered.name}</p>
