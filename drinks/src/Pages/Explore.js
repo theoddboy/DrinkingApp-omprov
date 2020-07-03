@@ -1,12 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import {NavLink} from "react-router-dom";
 import HeaderLinks from "../Components/HeaderLinks";
 
 import drinksArr from "../Data/drinks.json"
 
-let searchword = "pizza";
-
 const Explore = () => {
+
+    const [filteredArr, setFilteredArr] = useState(drinksArr.cocktails)
+
+    const filterDrinks = (e) => {
+        e.preventDefault();
+        const searchWord = e.target.elements.input.value.trim().toLowerCase();
+        setFilteredArr(drinksArr.cocktails.filter(elem => elem.name.toLowerCase().includes(searchWord)))
+        }
+    
+    const showDrink = () => {
+        return filteredArr.map((filtered, elem) => {
+            return( 
+                <div>
+                    <p>{filtered.name}</p>
+                    <NavLink key={elem} to={{
+                        pathname:'/drinkinfo',
+                        elem,
+                        whichWay:0
+                    }}>
+    
+            <img src={filtered.image} key={elem} alt={filtered.name} />       
+            </NavLink>
+            </div>
+            )
+        })
+    }
 
     return(
         <div id="startpage"> 
@@ -17,39 +41,26 @@ const Explore = () => {
         <br/> sidan skall uppdateras när man kommenterar en drink eller klickar på sök
         <br/> error när sökning gått fel
         </p>
-        <input
-            onChange={(e) => searchword=(e.target.value)}
+
+        <form onSubmit={filterDrinks}>
+        <input name="input"
             placeholder="type here"
         />
-            <button onClick={ShowDrinks}>
+            <button>
                 search
             </button>
+        </form>
 
-            {ShowDrinks()}
+
+            <div>
+            {
+                showDrink()
+            }
+            </div>
 
         </div>
     )
 }
-
-const ShowDrinks = () => {
-        return(
-        <div>
-            {drinksArr.cocktails.filter(elem => elem.name.toLowerCase().includes(searchword)).map((filtered, elem) => (
-                <div key={elem}>
-                    <p>{filtered.name}</p>
-                    <NavLink key={elem} to={{
-                        pathname:'/drinkinfo',
-                        elem,
-                        whichWay:0
-                        }}>
-
-                        <img src={filtered.image} key={elem} alt={filtered.name} />       
-                    </NavLink>
-            </div>
-        ))}
-      </div>
-        )
-    }
 
 
 export default Explore;

@@ -87,7 +87,9 @@ const DrinkInfo = (info) => {
 const loadComments = (elem) => {
   return(
     <div>
-  {comments.filter(drinkNR => drinkNR.drink === elem).map((eleme, key) => (
+  {comments.filter(drinkNR => drinkNR.drink === elem).map((eleme, key) => {
+return(
+
     <div key={key}>
       <p>{eleme.name}</p>
       <p>{eleme.time}</p>
@@ -96,7 +98,7 @@ const loadComments = (elem) => {
       <br/>
       <p>{eleme.comment}</p>
     </div>
-))}
+)})}
 </div>
   )
 }
