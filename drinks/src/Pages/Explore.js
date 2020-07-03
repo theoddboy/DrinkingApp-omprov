@@ -41,8 +41,7 @@ const Explore = () => {
         <br/>
         <p> inte klart: 
         <br/> du skall hamna på rätt drink när du klickar en bild i en filtrerad lista
-        <br/> sidan skall uppdateras när man kommenterar en drink eller klickar på sök
-        <br/> error när sökning gått fel
+        <br/> sidan skall uppdateras när man kommenterar en drink
         </p>
 
         <form onSubmit={filterDrinks}>
